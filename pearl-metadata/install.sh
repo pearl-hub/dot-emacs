@@ -1,8 +1,8 @@
 
 post_install() {
-    apply "(load-file \"$PEARL_PKGDIR/emacs.el\")" $HOME/.emacs
+    return 0
 }
 
 pre_remove() {
-    unapply "(load-file \"$PEARL_PKGDIR/emacs.el\")" $HOME/.emacs
+    return 0
 }

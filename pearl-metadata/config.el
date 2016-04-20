@@ -2,7 +2,7 @@
 ;; -*- mode: elisp -*-
 
 ;; Path where settings and plugins are kept
-(setq pearl-path-settings (expand-file-name "emacs.d/settings"
+(setq pearl-path-settings (expand-file-name "../emacs.d/settings"
     (file-name-directory load-file-name)))
 
 ;; path where settings files are kept
