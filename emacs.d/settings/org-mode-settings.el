@@ -1,6 +1,7 @@
-(setq org-todo-keywords
-    '((sequence "TODO" "PENDING" "|" "DONE")))
+; https://orgmode.org/features.html
 
+(setq org-todo-keywords
+    '((sequence "TODO" "BLOCKED" "IN-PROGRESS" "|" "DONE")))
 
 ;; Save the running clock and all clock history when exiting Emacs, load it on startup
 (setq org-clock-persist t)
@@ -12,7 +13,11 @@
 ;; Clock out when moving task to a done state
 (setq org-clock-out-when-done t)
 
-;; Remeber settings
+;; Date/Time format
+(setq-default org-display-custom-times t)
+(setq org-time-stamp-custom-formats '("<%y-%m-%d %a>" . "<%y-%m-%d %a %H:%M>"))
+
+;; Remember settings
 (setq org-directory "~/orgfiles/")
 (setq org-default-notes-file "~/notes.org")
 (setq remember-annotation-functions '(org-remember-annotation))

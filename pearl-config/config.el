@@ -11,6 +11,9 @@
 ;; General settings
 (require 'general-settings)
 
+;; Melpa settings
+(require 'melpa-settings)
+
 ;; Ido mode
 (require 'ido-settings)
 

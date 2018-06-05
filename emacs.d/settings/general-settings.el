@@ -41,9 +41,6 @@
 (setq-default indent-tabs-mode nil) 
 
 
-;; ========== Support Wheel Mouse Scrolling ==========
-(mouse-wheel-mode t) 
-
 ;; ========== Show the trailing whitespace =========
 (setq show-trailing-whitespace 1)
 
@@ -77,7 +74,6 @@
 
 
 ;; ========== Set the fill column ==========
-;; Enable backup files.
 (setq-default fill-column 79)
 
 
@@ -88,7 +84,6 @@
 ;; =====  Don't show the startup screen =====
 (setq inhibit-startup-screen 1)
 (setq inhibit-splash-screen 1)
-
 
 
 ;; ===== Don't show stuffs =====
@@ -103,7 +98,7 @@
 
 
 ;; ===== Turn on Auto Fill mode automatically in all modes =====
-;; Auto-fill-mode the the automatic wrapping of lines and insertion of
+;; Auto-fill-mode the automatic wrapping of lines and insertion of
 ;; newlines when the cursor goes over the column limit.
 ;; This should actually turn on auto-fill-mode by default in all major
 ;; modes. The other way to do this is to turn on the fill for specific modes
@@ -112,7 +107,8 @@
 
 
 ;; ===== Make Org mode the default mode for new buffers =====
-(setq default-major-mode 'org-mode)
+; This variable is deprecated since emacs 23.2
+;(setq default-major-mode 'org-mode)
 
 
 ;; ===== Key bindings =====
