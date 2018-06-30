@@ -37,4 +37,35 @@
 ;; Set agenda key binding
 (define-key global-map "\C-ca" 'org-agenda)
 
+
+;; Set wip limit on a specific state
+;; https://emacs.stackexchange.com/questions/10206/limit-number-of-org-todo-items-in-a-certain-state
+(defun org-count-todos-in-state (state)
+  (let ((count 0))
+    (org-scan-tags (lambda ()
+                     (when (string= (org-get-todo-state) state)
+                       (setq count (1+ count))))
+                   t t)
+    count))
+
+;; Set IN-PROGRESS WIP limit to two in order to deal with subtasks.
+;; This may be improved by forcing the WIP limit only on the highest level tasks.
+(defvar org-wip-limit 2  "Work-in-progress limit")
+(defvar org-wip-state "IN-PROGRESS")
+
+(defun org-block-wip-limit (change-plist)
+  (catch 'dont-block
+    (when (or (not (eq (plist-get change-plist :type) 'todo-state-change))
+              (not (string= (plist-get change-plist :to) org-wip-state)))
+      (throw 'dont-block t))
+
+    (when (>= (org-count-todos-in-state org-wip-state) org-wip-limit )
+      (setq org-block-entry-blocking (format "WIP limit: %s" org-wip-state))
+      (throw 'dont-block nil))
+
+    t)) ; do not block
+
+(add-hook 'org-blocker-hook #'org-block-wip-limit)
+
+
 (provide 'org-mode-settings)
